@@ -1,35 +1,31 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "corals/utility-rating",
+    "description": "Utility Rating",
     "keywords": [
-        ":vendor_name",
-        ":package_slug"
+        "corals",
+        "utility",
+        "rating"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/coralsio/utility-rating",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "corals",
             "role": "Developer"
         }
     ],
     "require": {
-        "php": "^8.0"
-    },
-    "require-dev": {
-        "friendsofphp/php-cs-fixer": "^3.0",
-        "pestphp/pest": "^1.20",
-        "spatie/ray": "^1.28"
+        "php": ">=7.2"
+
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src"
+            "Corals\\UtilityRating\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests"
+            "Corals\\UtilityRating\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -40,6 +36,12 @@
     "config": {
         "sort-packages": true
     },
-    "minimum-stability": "dev",
-    "prefer-stable": true
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Corals\\UtilityRating\\UtilityRatingServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev"
 }
