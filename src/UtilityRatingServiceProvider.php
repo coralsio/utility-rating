@@ -20,10 +20,8 @@ class UtilityRatingServiceProvider extends ServiceProvider
         );
         $this->publishes([
             __DIR__ . '/config/utility-rating.php' => config_path('utility-rating.php'),
-            __DIR__ . '/resources/views' => resource_path('resources/views/vendor/utility-rating')
+            __DIR__ . '/resources/views' => resource_path('resources/views/vendor/utility-rating'),
         ]);
-
-
     }
 
     public function register()

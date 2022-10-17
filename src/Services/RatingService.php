@@ -15,7 +15,7 @@ class RatingService extends BaseServiceClass
 
         $rateable = $rateableClass::findByHash($rateable_hashed_id);
 
-        if (!$rateable) {
+        if (! $rateable) {
             abort(404, 'Not Found!!');
         }
 

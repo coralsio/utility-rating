@@ -27,7 +27,7 @@ class RatingTransformer extends BaseTransformer
             'pending' => 'info',
             'approved' => 'success',
             'disapproved' => 'danger',
-            'spam' => 'warning'
+            'spam' => 'warning',
         ];
 
         $setting_name = strtolower(class_basename($rating->reviewrateable)) . '_default_rating_status';

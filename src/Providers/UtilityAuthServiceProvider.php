@@ -14,7 +14,7 @@ class UtilityAuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        Rating::class => RatingPolicy::class
+        Rating::class => RatingPolicy::class,
     ];
 
     /**

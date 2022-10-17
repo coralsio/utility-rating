@@ -5,8 +5,8 @@ namespace Corals\UtilityRating\DataTables;
 use Corals\Foundation\DataTables\BaseDataTable;
 use Corals\UtilityRating\Models\Rating;
 use Corals\UtilityRating\Transformers\RatingTransformer;
-use Yajra\DataTables\EloquentDataTable;
 use Illuminate\Http\Request;
+use Yajra\DataTables\EloquentDataTable;
 
 class RatingsDataTable extends BaseDataTable
 {
@@ -32,8 +32,7 @@ class RatingsDataTable extends BaseDataTable
      */
     public function query(Rating $model, Request $request)
     {
-        if (!isSuperUser()) {
-
+        if (! isSuperUser()) {
             return $model->reviews()->newQuery();
         } else {
             return $model->newQuery();
@@ -83,6 +82,7 @@ class RatingsDataTable extends BaseDataTable
     protected function getOptions()
     {
         $url = url(config('utility-rating.models.rating.resource_url'));
+
         return ['resource_url' => $url];
     }
 }

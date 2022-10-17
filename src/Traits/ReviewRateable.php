@@ -25,13 +25,12 @@ trait ReviewRateable
     {
         $ratings = $this->morphMany(Rating::class, 'reviewrateable');
 
-        if (!is_null($status)) {
+        if (! is_null($status)) {
             $ratings = $ratings->where('utility_ratings.status', $status);
         }
 
         return $ratings->latest();
     }
-
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\MorphTo
@@ -118,6 +117,7 @@ trait ReviewRateable
         $ratings = $this->ratings('approved');
         $quantity = $ratings->count();
         $total = $ratings->selectRaw('SUM(rating) as total')->pluck('total');
+
         return ($quantity * $max) > 0 ? $total / (($quantity * $max) / 100) : 0;
     }
 
@@ -149,11 +149,8 @@ trait ReviewRateable
         return $ratings['rating'];
     }
 
-
     public function getDisplayReference()
     {
         return $this->getIdentifier();
     }
-
-
 }
