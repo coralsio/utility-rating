@@ -31,7 +31,10 @@
     "scripts": {
         "test": "vendor/bin/pest",
         "test-coverage": "vendor/bin/pest --coverage",
-        "format": "vendor/bin/php-cs-fixer fix --allow-risky=yes"
+        "format": "vendor/bin/php-cs-fixer fix --allow-risky=yes",
+        "post-update-cmd": [
+            "Corals\\UtilityRating\\ScriptPermissions::installPermissions"
+        ]
     },
     "config": {
         "sort-packages": true
