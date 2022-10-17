@@ -17,7 +17,7 @@ class RatingToggleStatus extends CoralsBaseNotification
 
         $owner = method_exists($reviewrateable, 'owner') ? $reviewrateable->owner : $reviewrateable->creator;
 
-        if (!empty($owner)) {
+        if (! empty($owner)) {
             return $owner;
         } else {
             return [];

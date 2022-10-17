@@ -7,7 +7,6 @@ use Illuminate\Console\Command;
 
 class RatingCalculator extends Command
 {
-
     protected $signature = 'ratings:avg {model_class}';
 
     /**

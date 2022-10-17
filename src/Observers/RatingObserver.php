@@ -6,7 +6,6 @@ use Corals\UtilityRating\Models\Rating;
 
 class RatingObserver
 {
-
     /**
      * @param Rating $rating
      */
