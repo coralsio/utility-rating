@@ -10,7 +10,6 @@ use Corals\UtilityRating\Http\Requests\RatingRequest;
 use Corals\UtilityRating\Models\Rating;
 use Corals\UtilityRating\Services\RatingService;
 use Corals\UtilityRating\Traits\RatingCommon;
-use Illuminate\Support\Facades\Auth;
 
 class RatingBaseController extends BaseController
 {
@@ -72,6 +71,7 @@ class RatingBaseController extends BaseController
             } else {
                 flash($message['message'])->error();
             }
+
             return redirectTo($this->redirectUrl);
         }
     }
@@ -127,7 +127,6 @@ class RatingBaseController extends BaseController
     public function bulkAction(BulkRequest $request)
     {
         try {
-
             $action = $request->input('action');
             $selection = json_decode($request->input('selection'), true);
 
@@ -135,11 +134,12 @@ class RatingBaseController extends BaseController
                 case 'delete':
                     foreach ($selection as $selection_id) {
                         $rating = Rating::findByHash($selection_id);
-                        $rating_request = new RatingRequest;
+                        $rating_request = new RatingRequest();
                         $rating_request->setMethod('DELETE');
                         $this->destroy($rating_request, $rating);
                     }
                     $message = ['level' => 'success', 'message' => trans('Corals::messages.success.deleted', ['item' => $this->title_singular])];
+
                     break;
 
                 case 'pending':
@@ -147,7 +147,7 @@ class RatingBaseController extends BaseController
                         $rating = Rating::findByHash($selection_id);
                         if (user()->can('Utility::rating.update')) {
                             $rating->update([
-                                'status' => 'pending'
+                                'status' => 'pending',
                             ]);
                             $rating->save();
                             $message = ['level' => 'success', 'message' => trans('utility-rating::attributes.update_status', ['item' => $this->title_singular])];
@@ -162,7 +162,7 @@ class RatingBaseController extends BaseController
                         $rating = Rating::findByHash($selection_id);
                         if (user()->can('Utility::rating.update')) {
                             $rating->update([
-                                'status' => 'approved'
+                                'status' => 'approved',
                             ]);
                             $rating->save();
                             $message = ['level' => 'success', 'message' => trans('utility-rating::attributes.update_status', ['item' => $this->title_singular])];
@@ -170,6 +170,7 @@ class RatingBaseController extends BaseController
                             $message = ['level' => 'error', 'message' => trans('utility-rating::attributes.no_permission', ['item' => $this->title_singular])];
                         }
                     }
+
                     break;
 
                 case 'disapproved':
@@ -177,7 +178,7 @@ class RatingBaseController extends BaseController
                         $rating = Rating::findByHash($selection_id);
                         if (user()->can('Utility::rating.update')) {
                             $rating->update([
-                                'status' => 'disapproved'
+                                'status' => 'disapproved',
                             ]);
                             $rating->save();
                             $message = ['level' => 'success', 'message' => trans('utility-rating::attributes.update_status', ['item' => $this->title_singular])];
@@ -185,6 +186,7 @@ class RatingBaseController extends BaseController
                             $message = ['level' => 'error', 'message' => trans('utility-rating::attributes.no_permission', ['item' => $this->title_singular])];
                         }
                     }
+
                     break;
 
                 case 'spam':
@@ -192,7 +194,7 @@ class RatingBaseController extends BaseController
                         $rating = Rating::findByHash($selection_id);
                         if (user()->can('Utility::rating.update')) {
                             $rating->update([
-                                'status' => 'spam'
+                                'status' => 'spam',
                             ]);
                             $rating->save();
                             $message = ['level' => 'success', 'message' => trans('utility-rating::attributes.update_status', ['item' => $this->title_singular])];
@@ -200,10 +202,9 @@ class RatingBaseController extends BaseController
                             $message = ['level' => 'error', 'message' => trans('utility-rating::attributes.no_permission', ['item' => $this->title_singular])];
                         }
                     }
+
                     break;
             }
-
-
         } catch (\Exception $exception) {
             log_exception($exception, Rating::class, 'bulkAction');
             $message = ['level' => 'error', 'message' => $exception->getMessage()];
@@ -233,7 +234,6 @@ class RatingBaseController extends BaseController
         return response()->json($message);
     }
 
-
     /**
      * @param Rating $rating
      * @param $status
@@ -248,7 +248,6 @@ class RatingBaseController extends BaseController
 
             $message = ['level' => 'success', 'message' => trans('utility-rating::messages.rating.success.status_update')];
         } catch (\Exception $exception) {
-
             //$rating->update(['status' => $exception->getMessage()]);
             log_exception($exception, Rating::class, 'toggleStatus');
             $message = ['level' => 'error', 'message' => $exception->getMessage()];

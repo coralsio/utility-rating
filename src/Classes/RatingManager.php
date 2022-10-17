@@ -2,8 +2,6 @@
 
 namespace Corals\UtilityRating\Classes;
 
-
-use Corals\Foundation\Search\Indexable;
 use Corals\UtilityRating\Models\AvgRating;
 use Corals\UtilityRating\Models\Rating as RatingModel;
 use Corals\UtilityRating\Traits\ReviewRateable;
@@ -11,8 +9,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class RatingManager
 {
-
-    protected $instance, $author;
+    protected $instance;
+    protected $author;
 
     /**
      * RatingManager constructor.
@@ -82,7 +80,6 @@ class RatingManager
 
 
         return $this->storeUpdateGeneralAvgRating($rating, $isNewReview, $oldRateValue, $toggleStatus);
-
     }
 
     /**
@@ -98,16 +95,16 @@ class RatingManager
         $avgRating = AvgRating::query()
             ->firstOrCreate([
                 'avgreviewable_type' => $rating->reviewrateable_type,
-                'avgreviewable_id' => $rating->reviewrateable_id
+                'avgreviewable_id' => $rating->reviewrateable_id,
             ], [
                 'avg' => $rating->rating,
                 'count' => 1,
                 'criterias' => [
                     $rating->criteria => [
                         'avg' => $rating->rating,
-                        'count' => 1
-                    ]
-                ]
+                        'count' => 1,
+                    ],
+                ],
             ]);
 
 
@@ -121,7 +118,6 @@ class RatingManager
 
 
         if ($isNewReview || ($rating->status == 'approved' && $toggleStatus)) {
-
             if ($criteria['count'] == 0) {
                 $criteria['count'] = 1;
                 $newReviewsCount = 1;
@@ -131,7 +127,6 @@ class RatingManager
                 $avg = (($criteria['avg'] * $criteria['count']) + $rating->rating) / $newReviewsCount;
             }
         } else {
-
             if ($rating->status == 'approved') {
                 $avg = (($criteria['avg'] * $criteria['count']) + ($rating->rating - $oldRateValue)) / $criteria['count'];
             } else {
@@ -142,15 +137,12 @@ class RatingManager
                 } else {
                     $avg = (($criteria['avg'] * $criteria['count']) - $rating->rating) / $newReviewsCount;
                 }
-
             }
-
-
         }
 
         $criterias[$rating->criteria] = [
             'avg' => $avg,
-            'count' => $newReviewsCount ?? $criteria['count']
+            'count' => $newReviewsCount ?? $criteria['count'],
         ];
 
 
@@ -158,10 +150,8 @@ class RatingManager
         $generalCount = 0;
 
         foreach ($criterias as $criteria) {
-
             $generalAvg += $criteria['avg'];
             $generalCount += $criteria['count'];
-
         }
 
         $generalAvg = $generalAvg / count($criterias);
@@ -169,10 +159,8 @@ class RatingManager
         return $generalAvg == 0 ? $avgRating->delete() : tap($avgRating)->update([
             'count' => $generalCount,
             'avg' => $generalAvg,
-            'criterias' => $criterias
+            'criterias' => $criterias,
         ]);
-
-
     }
 
     /**
@@ -188,7 +176,7 @@ class RatingManager
         $avgRating = AvgRating::query()
             ->firstOrCreate([
                 'avgreviewable_type' => $rating->reviewrateable_type,
-                'avgreviewable_id' => $rating->reviewrateable_id
+                'avgreviewable_id' => $rating->reviewrateable_id,
             ], [
                 'avg' => $rating->rating,
                 'count' => 1,
@@ -208,26 +196,21 @@ class RatingManager
 
             if ($rating->status == 'approved') {
                 $avg = (($avgRating->avg * $avgRating->count) + ($rating->rating - $oldRateValue)) / $avgRating->count;
-
             } else {
-
                 $newReviewsCount = $avgRating->count - 1;
 
                 if ($newReviewsCount == 0) {
                     $avg = 0;
                 } else {
-
                     $avg = (($avgRating->avg * $avgRating->count) - $rating->rating) / $newReviewsCount;
                 }
-
             }
-
         }
 
 
         return $avg == 0 ? $avgRating->delete() : tap($avgRating)->update([
             'count' => $newReviewsCount ?? $avgRating->count,
-            'avg' => $avg
+            'avg' => $avg,
         ]);
     }
 
@@ -243,7 +226,6 @@ class RatingManager
         if ($rating) {
             $oldRating = $rating->rating;
             $this->updateRating($rating, $data);
-
         } else {
             $setting_name = strtolower(class_basename($this->instance)) . '_default_rating_status';
             $data['status'] = \Settings::get($setting_name, 'approved');
@@ -287,12 +269,10 @@ class RatingManager
         $this->storeUpdateAvgRating($rating, false, 0, true);
 
         return $update;
-
     }
 
     public function drawStarts($count = 0)
     {
-
         $stars = '';
 
         for ($i = 1; $i <= 5; $i++) {
@@ -305,11 +285,9 @@ class RatingManager
 
     public function CalculateAvgByClass($class)
     {
-
-        $model = new $class;
+        $model = new $class();
 
         if (in_array(ReviewRateable::class, class_uses($model), true)) {
-
             $model->chunk(100, function ($chunk) use ($model) {
                 foreach ($chunk as $modelRecord) {
                     $model_reviews = $modelRecord->ratings('approved');
@@ -322,25 +300,21 @@ class RatingManager
                         AvgRating::query()
                             ->firstOrCreate([
                                 'avgreviewable_type' => getMorphAlias($model),
-                                'avgreviewable_id' => $modelRecord->id
+                                'avgreviewable_id' => $modelRecord->id,
                             ], [
                                 'avg' => $avg_rating,
                                 'count' => $reviews_count,
                             ]);
 
                         if ($parent_obj = $modelRecord->AggregatedRatingParentModel()) {
-                            foreach ($modelRecord->ratings as $review){
-
+                            foreach ($modelRecord->ratings as $review) {
                                 $parent_rating = clone $review;
                                 $parent_rating->reviewrateable_id = $parent_obj->id;
                                 $parent_rating->reviewrateable_type = getMorphAlias(get_class($parent_obj));
                                 $this->storeUpdateGeneralAvgRating($parent_rating, true, null, false);
                             }
-
                         }
                     }
-
-
                 }
             });
         }

@@ -9,7 +9,8 @@ use Corals\User\Models\User;
 
 class Rating extends BaseModel
 {
-    use ModelHasComments, PresentableTrait;
+    use ModelHasComments;
+    use PresentableTrait;
     /**
      * @var string
      */
@@ -25,7 +26,7 @@ class Rating extends BaseModel
     protected $guarded = ['id', 'created_at', 'updated_at'];
 
     protected $casts = [
-        'properties' => 'json'
+        'properties' => 'json',
     ];
 
     /**

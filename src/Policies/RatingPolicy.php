@@ -3,35 +3,38 @@
 namespace Corals\UtilityRating\Policies;
 
 use Corals\Foundation\Policies\BasePolicy;
-use Corals\UtilityRating\Models\Rating;
 use Corals\User\Models\User;
+use Corals\UtilityRating\Models\Rating;
 
 class RatingPolicy extends BasePolicy
 {
     protected $skippedAbilities = [
-        'updateStatus'
+        'updateStatus',
     ];
 
     protected $administrationPermission = 'Administrations::admin.utility';
 
     public function updateStatus(User $user, Rating $rating, $status)
     {
-
-        if ($user->cant('Utility::rating.set_status') && !isSuperUser($user)) {
+        if ($user->cant('Utility::rating.set_status') && ! isSuperUser($user)) {
             return false;
         }
         switch ($status) {
             case 'pending':
                 return $rating->canBePending();
+
                 break;
             case 'approved':
                 return $rating->canBeApproved();
+
                 break;
             case 'disapproved':
                 return $rating->canBeDisApproved();
+
                 break;
             case 'spam':
                 return $rating->canBeSpam();
+
                 break;
             default:
                 return false;
@@ -52,6 +55,7 @@ class RatingPolicy extends BasePolicy
         if ($user->can('Utility::rating.view')) {
             return true;
         }
+
         return false;
     }
 
@@ -60,6 +64,7 @@ class RatingPolicy extends BasePolicy
         if ($user->can('Utility::rating.update')) {
             return true;
         }
+
         return false;
     }
 
@@ -68,6 +73,7 @@ class RatingPolicy extends BasePolicy
         if ($user->can('Utility::rating.delete')) {
             return true;
         }
+
         return false;
     }
 }

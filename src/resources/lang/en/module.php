@@ -3,6 +3,6 @@
 return [
     'rating' => [
         'title' => 'Ratings',
-        'title_singular' => 'Rating'
+        'title_singular' => 'Rating',
     ],
 ];

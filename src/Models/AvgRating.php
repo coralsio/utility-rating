@@ -17,11 +17,10 @@ class AvgRating extends BaseModel
 
     protected $casts = [
         'properties' => 'json',
-        'criterias' => 'json'
+        'criterias' => 'json',
     ];
 
     protected $guarded = ['id'];
-
 
     public function reviewrateable()
     {

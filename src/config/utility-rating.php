@@ -15,7 +15,7 @@ return [
                     'permissions' => [],
                     'data' => [
                         'action' => "post",
-                        'table' => "#RatingsDataTable"
+                        'table' => "#RatingsDataTable",
                     ],
                 ],
                 'approved' => [
@@ -57,5 +57,5 @@ return [
                 ],
             ],
         ],
-    ]
+    ],
 ];
