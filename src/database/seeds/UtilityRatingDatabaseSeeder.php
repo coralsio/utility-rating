@@ -2,12 +2,9 @@
 
 namespace Corals\UtilityRating\database\seeds;
 
-use Corals\Menu\Models\Menu;
-use Corals\Settings\Models\Setting;
 use Corals\User\Communication\Models\NotificationTemplate;
 use Corals\User\Models\Permission;
 use Illuminate\Database\Seeder;
-use \Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class UtilityRatingDatabaseSeeder extends Seeder
 {
@@ -20,7 +17,6 @@ class UtilityRatingDatabaseSeeder extends Seeder
     {
         $this->call(UtilityRatingPermissionsDatabaseSeeder::class);
         $this->call(UtilityRatingNotificationTemplatesSeeder::class);
-
     }
 
     public function rollback()
