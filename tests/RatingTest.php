@@ -1,4 +1,5 @@
 <?php
+
 namespace Corals\UtilityRating\Tests;
 
 //use PHPUnit\Framework\TestCase;
