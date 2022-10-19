@@ -62,6 +62,5 @@ class UtilityRatingPermissionsDatabaseSeeder extends Seeder
             $member_role->forgetCachedPermissions();
             $member_role->givePermissionTo('Utility::rating.create');
         }
-
     }
 }

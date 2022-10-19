@@ -3,7 +3,6 @@
 namespace Corals\UtilityRating;
 
 use Corals\Settings\Facades\Modules;
-use Corals\Settings\Facades\Settings;
 use Corals\User\Communication\Facades\CoralsNotification;
 use Corals\UtilityRating\Classes\RatingManager;
 use Corals\UtilityRating\Commands\RatingCalculator;
@@ -53,7 +52,6 @@ class UtilityRatingServiceProvider extends ServiceProvider
     protected function registerCommand()
     {
         $this->commands(RatingCalculator::class);
-
     }
 
     protected function registerMorphMaps()
@@ -73,11 +71,13 @@ class UtilityRatingServiceProvider extends ServiceProvider
         CoralsNotification::addEvent(
             'notifications.rate.rate_created',
             'Rate Created',
-            RateCreated::class);
+            RateCreated::class
+        );
 
         CoralsNotification::addEvent(
             'notifications.rate.rate_toggle_status',
             'Rate Toggle Status',
-            RatingToggleStatus::class);
+            RatingToggleStatus::class
+        );
     }
 }
