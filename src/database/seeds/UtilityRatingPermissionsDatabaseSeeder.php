@@ -1,19 +1,28 @@
 <?php
 
-namespace Corals\UtilityRating;
+namespace Corals\UtilityRating\database\seeds;
 
 use Carbon\Carbon;
 use Corals\User\Models\Role;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Seeder;
 
-/**
- * @package utility-rating
- */
-class ScriptPermissions
+class UtilityRatingPermissionsDatabaseSeeder extends Seeder
 {
-    public static function installPermissions()
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
     {
-        DB::table('permissions')->insert([
+        \DB::table('permissions')->insert([
+            [
+                'name' => 'Administrations::admin.utility_rating',
+                'guard_name' => config('auth.defaults.guard'),
+                'created_at' => \Carbon\Carbon::now(),
+                'updated_at' => \Carbon\Carbon::now(),
+            ],
+            //rating
             [
                 'name' => 'Utility::rating.create',
                 'guard_name' => config('auth.defaults.guard'),
@@ -26,6 +35,7 @@ class ScriptPermissions
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
+
             [
                 'name' => 'Utility::rating.update',
                 'guard_name' => config('auth.defaults.guard'),
@@ -49,7 +59,9 @@ class ScriptPermissions
         $member_role = Role::where('name', 'member')->first();
 
         if ($member_role) {
+            $member_role->forgetCachedPermissions();
             $member_role->givePermissionTo('Utility::rating.create');
         }
+
     }
 }

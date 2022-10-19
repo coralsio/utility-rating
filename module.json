@@ -1,0 +1,16 @@
+{
+    "code": "corals-utility-rating",
+    "name": "Utility Ratings",
+    "author": "Corals",
+    "type": "verndor",
+    "description": "Utility Ratings",
+    "namespace": "Corals\\UtilityRating",
+    "provider": "UtilityRatingServiceProvider",
+    "version": "4.2.4",
+    "load_order": "600",
+    "folder": "utility-rating",
+    "autoload": "psr-4",
+    "icon": "fa fa-star",
+    "platform": "UtilityRating",
+    "supported_platforms": []
+}
