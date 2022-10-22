@@ -14,10 +14,6 @@
             "role": "Developer"
         }
     ],
-    "require": {
-        "php": ">=7.2"
-
-    },
     "autoload": {
         "psr-4": {
             "Corals\\UtilityRating\\": "src"
@@ -25,12 +21,12 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Corals\\UtilityRating\\Tests\\": "tests"
+            "Tests\\": "tests/"
         }
     },
     "require-dev": {
-        "phpunit/phpunit": "~4.0",
-        "phpspec/phpspec": "~2.1"
+        "phpunit/phpunit": "^9",
+        "laravel/pint": "^1.0"
     },
     "scripts": {
         "test": "vendor/bin/phpunit",
