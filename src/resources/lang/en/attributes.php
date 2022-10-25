@@ -16,4 +16,6 @@ return [
             'spam' => 'Spam',
         ],
     ],
+    'update_status' => ':item Status has been update.',
+    'no_permission' => ':item There is no permission update status',
 ];

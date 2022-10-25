@@ -19,7 +19,7 @@ class Rating extends BaseModel
      *  Model configuration.
      * @var string
      */
-    public $config = 'utility.models.rating';
+    public $config = 'utility-rating.models.rating';
     /**
      * @var array
      */
