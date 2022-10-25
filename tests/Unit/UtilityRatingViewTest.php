@@ -2,9 +2,7 @@
 
 namespace Tests\Feature;
 
-use Corals\UtilityRating\Models\Rating;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 class UtilityRatingViewTest extends TestCase
@@ -17,7 +15,7 @@ class UtilityRatingViewTest extends TestCase
 
         $this->post('login', [
             'email' => 'superuser@corals.io',
-            'password' => '123456'
+            'password' => '123456',
         ]);
     }
 

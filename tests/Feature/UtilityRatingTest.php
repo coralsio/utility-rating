@@ -20,9 +20,8 @@ class UtilityRatingTest extends TestCase
 
         $this->post('login', [
             'email' => 'superuser@corals.io',
-            'password' => '123456'
+            'password' => '123456',
         ]);
-
     }
 
     public function test_utility_rating_create()
@@ -33,7 +32,7 @@ class UtilityRatingTest extends TestCase
                 $response = $this->post('employers/' . $employer->hashed_id . '/rate', [
                     'review_rating' => 3,
                     'review_subject' => 'good',
-                    'review_text' => 'nice']);
+                    'review_text' => 'nice', ]);
 
                 $this->rating = Rating::query()->first();
 
@@ -43,7 +42,6 @@ class UtilityRatingTest extends TestCase
             $this->assertFalse(false);
         }
     }
-
 
     public function test_utility_rating_toggle_status()
     {
@@ -59,11 +57,10 @@ class UtilityRatingTest extends TestCase
     public function test_utility_rating_bulk_action()
     {
         $response = $this->post('utilities/ratings/bulk-action', [
-            'action' => 'pending']);
+            'action' => 'pending', ]);
 
 
         $response->assertRedirect();
-
     }
 
     public function test_utility_rating_edit()
@@ -72,7 +69,6 @@ class UtilityRatingTest extends TestCase
             $response = $this->get('utilities/ratings/' . $this->rating->hashed_id . '/edit');
 
             $response->assertStatus(200)->assertViewIs('utility-rating::create_edit');
-
         }
         $this->assertTrue(true);
     }
@@ -84,7 +80,7 @@ class UtilityRatingTest extends TestCase
                 'review_rating' => 3,
                 'review_subject' => 'good',
                 'review_text' => 'nice',
-                'status' => 'disapproved']);
+                'status' => 'disapproved', ]);
 
 
             $response->assertRedirect('utilities/ratings');
@@ -97,10 +93,9 @@ class UtilityRatingTest extends TestCase
         if ($this->rating) {
             $response = $this->delete('utilities/ratings/' . $this->rating->hashed_id);
 
-            $response->assertStatus(200)->assertSeeText('Rating has been deleted successfully.');;
-
+            $response->assertStatus(200)->assertSeeText('Rating has been deleted successfully.');
+            ;
         }
         $this->assertTrue(true);
     }
-
 }
