@@ -2,7 +2,7 @@
 
 namespace Corals\Modules\Utility\Providers;
 
-use CCorals\Modules\Utility\database\seeds\UtilityRatingDatabaseSeeder;
+use Corals\Modules\Utility\database\seeds\UtilityRatingDatabaseSeeder;
 use Corals\Foundation\Providers\BaseUninstallModuleServiceProvider;
 use Corals\Modules\Utility\database\migrations\CreateRatingTable;
 
