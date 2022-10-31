@@ -1,9 +1,9 @@
 <?php
 
-namespace Corals\UtilityRating\Services;
+namespace Corals\Modules\Utility\Services\Rating;
 
 use Corals\Foundation\Services\BaseServiceClass;
-use Corals\UtilityRating\Classes\RatingManager;
+use Corals\Modules\Utility\Classes\Rating\RatingManager;
 
 class RatingService extends BaseServiceClass
 {

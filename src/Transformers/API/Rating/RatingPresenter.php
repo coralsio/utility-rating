@@ -1,17 +1,17 @@
 <?php
 
-namespace Corals\UtilityRating\Transformers;
+namespace Corals\Modules\Utility\Transformers\API\Rating;
 
 use Corals\Foundation\Transformers\FractalPresenter;
 
 class RatingPresenter extends FractalPresenter
 {
+
     /**
-     * @param array $extras
      * @return RatingTransformer|\League\Fractal\TransformerAbstract
      */
-    public function getTransformer($extras = [])
+    public function getTransformer()
     {
-        return new RatingTransformer($extras);
+        return new RatingTransformer();
     }
 }

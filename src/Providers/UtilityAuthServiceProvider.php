@@ -1,9 +1,9 @@
 <?php
 
-namespace Corals\UtilityRating\Providers;
+namespace Corals\Modules\Utility\Providers;
 
-use Corals\UtilityRating\Models\Rating;
-use Corals\UtilityRating\Policies\RatingPolicy;
+use Corals\Modules\Utility\Models\Rating\Rating;
+use Corals\Modules\Utility\Policies\Rating\RatingPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class UtilityAuthServiceProvider extends ServiceProvider

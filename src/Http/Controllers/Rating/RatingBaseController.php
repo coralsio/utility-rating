@@ -1,15 +1,15 @@
 <?php
 
-namespace Corals\UtilityRating\Http\Controllers;
+namespace Corals\Modules\Utility\Http\Controllers\Rating;
 
 use Corals\Foundation\Http\Controllers\BaseController;
 use Corals\Foundation\Http\Requests\BulkRequest;
-use Corals\UtilityRating\Classes\RatingManager;
-use Corals\UtilityRating\DataTables\RatingsDataTable;
-use Corals\UtilityRating\Http\Requests\RatingRequest;
-use Corals\UtilityRating\Models\Rating;
-use Corals\UtilityRating\Services\RatingService;
-use Corals\UtilityRating\Traits\RatingCommon;
+use Corals\Modules\Utility\Classes\Rating\RatingManager;
+use Corals\Modules\Utility\DataTables\RatingsDataTable;
+use Corals\Modules\Utility\Http\Requests\Rating\RatingRequest;
+use Corals\Modules\Utility\Models\Rating\Rating;
+use Corals\Modules\Utility\Services\Rating\RatingService;
+use Corals\Modules\Utility\Traits\Rating\RatingCommon;
 
 class RatingBaseController extends BaseController
 {

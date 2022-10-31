@@ -1,10 +1,10 @@
 <?php
 
-namespace Corals\UtilityRating\Policies;
+namespace Corals\Modules\Utility\Policies\Rating;
 
 use Corals\Foundation\Policies\BasePolicy;
 use Corals\User\Models\User;
-use Corals\UtilityRating\Models\Rating;
+use Corals\Modules\Utility\Models\Rating\Rating;
 
 class RatingPolicy extends BasePolicy
 {

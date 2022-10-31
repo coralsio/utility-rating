@@ -3,7 +3,7 @@
 return [
     'models' => [
         'rating' => [
-            'presenter' => \Corals\UtilityRating\Transformers\RatingPresenter::class,
+            'presenter' => \Corals\Modules\Utility\Transformers\Rating\RatingPresenter::class,
             'resource_url' => 'utilities/ratings',
             'actions' => [
                 'pending' => [
