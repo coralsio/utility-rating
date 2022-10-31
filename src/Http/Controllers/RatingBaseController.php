@@ -84,7 +84,7 @@ class RatingBaseController extends BaseController
     public function edit(RatingRequest $request, Rating $rating)
     {
         $this->setViewSharedData([
-            'title_singular' => trans('Corals::labels.update_title', ['title' => $rating->title])
+            'title_singular' => trans('Corals::labels.update_title', ['title' => $rating->title]),
         ]);
 
         return view('utility-rating::create_edit')->with(compact('rating'));
@@ -142,7 +142,7 @@ class RatingBaseController extends BaseController
                     }
                     $message = [
                         'level' => 'success',
-                        'message' => trans('Corals::messages.success.deleted', ['item' => $this->title_singular])
+                        'message' => trans('Corals::messages.success.deleted', ['item' => $this->title_singular]),
                     ];
 
                     break;
@@ -157,14 +157,18 @@ class RatingBaseController extends BaseController
                             $rating->save();
                             $message = [
                                 'level' => 'success',
-                                'message' => trans('utility-rating::attributes.update_status',
-                                    ['item' => $this->title_singular])
+                                'message' => trans(
+                                    'utility-rating::attributes.update_status',
+                                    ['item' => $this->title_singular]
+                                ),
                             ];
                         } else {
                             $message = [
                                 'level' => 'error',
-                                'message' => trans('utility-rating::attributes.no_permission',
-                                    ['item' => $this->title_singular])
+                                'message' => trans(
+                                    'utility-rating::attributes.no_permission',
+                                    ['item' => $this->title_singular]
+                                ),
                             ];
                         }
                     }
@@ -180,14 +184,18 @@ class RatingBaseController extends BaseController
                             $rating->save();
                             $message = [
                                 'level' => 'success',
-                                'message' => trans('utility-rating::attributes.update_status',
-                                    ['item' => $this->title_singular])
+                                'message' => trans(
+                                    'utility-rating::attributes.update_status',
+                                    ['item' => $this->title_singular]
+                                ),
                             ];
                         } else {
                             $message = [
                                 'level' => 'error',
-                                'message' => trans('utility-rating::attributes.no_permission',
-                                    ['item' => $this->title_singular])
+                                'message' => trans(
+                                    'utility-rating::attributes.no_permission',
+                                    ['item' => $this->title_singular]
+                                ),
                             ];
                         }
                     }
@@ -204,14 +212,18 @@ class RatingBaseController extends BaseController
                             $rating->save();
                             $message = [
                                 'level' => 'success',
-                                'message' => trans('utility-rating::attributes.update_status',
-                                    ['item' => $this->title_singular])
+                                'message' => trans(
+                                    'utility-rating::attributes.update_status',
+                                    ['item' => $this->title_singular]
+                                ),
                             ];
                         } else {
                             $message = [
                                 'level' => 'error',
-                                'message' => trans('utility-rating::attributes.no_permission',
-                                    ['item' => $this->title_singular])
+                                'message' => trans(
+                                    'utility-rating::attributes.no_permission',
+                                    ['item' => $this->title_singular]
+                                ),
                             ];
                         }
                     }
@@ -228,14 +240,18 @@ class RatingBaseController extends BaseController
                             $rating->save();
                             $message = [
                                 'level' => 'success',
-                                'message' => trans('utility-rating::attributes.update_status',
-                                    ['item' => $this->title_singular])
+                                'message' => trans(
+                                    'utility-rating::attributes.update_status',
+                                    ['item' => $this->title_singular]
+                                ),
                             ];
                         } else {
                             $message = [
                                 'level' => 'error',
-                                'message' => trans('utility-rating::attributes.no_permission',
-                                    ['item' => $this->title_singular])
+                                'message' => trans(
+                                    'utility-rating::attributes.no_permission',
+                                    ['item' => $this->title_singular]
+                                ),
                             ];
                         }
                     }
@@ -264,7 +280,7 @@ class RatingBaseController extends BaseController
 
             $message = [
                 'level' => 'success',
-                'message' => trans('Corals::messages.success.deleted', ['item' => $this->title_singular])
+                'message' => trans('Corals::messages.success.deleted', ['item' => $this->title_singular]),
             ];
         } catch (\Exception $exception) {
             log_exception($exception, Rating::class, 'destroy');
@@ -288,7 +304,7 @@ class RatingBaseController extends BaseController
 
             $message = [
                 'level' => 'success',
-                'message' => trans('utility-rating::messages.rating.success.status_update')
+                'message' => trans('utility-rating::messages.rating.success.status_update'),
             ];
         } catch (\Exception $exception) {
             //$rating->update(['status' => $exception->getMessage()]);

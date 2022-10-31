@@ -25,7 +25,7 @@ trait ReviewRateable
     {
         $ratings = $this->morphMany(Rating::class, 'reviewrateable');
 
-        if (!is_null($status)) {
+        if (! is_null($status)) {
             $ratings = $ratings->where('utility_ratings.status', $status);
         }
 

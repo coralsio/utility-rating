@@ -16,7 +16,7 @@ class RatingPolicy extends BasePolicy
 
     public function updateStatus(User $user, Rating $rating, $status)
     {
-        if ($user->cant('Utility::rating.set_status') && !isSuperUser($user)) {
+        if ($user->cant('Utility::rating.set_status') && ! isSuperUser($user)) {
             return false;
         }
         switch ($status) {
