@@ -1,16 +1,17 @@
 <?php
 
-namespace Corals\Modules\Utility\Models\Rating;
+namespace Corals\Modules\Utility\Rating\Models;
 
 use Corals\Foundation\Models\BaseModel;
 use Corals\Foundation\Transformers\PresentableTrait;
-use Corals\Modules\Utility\Traits\Comment\ModelHasComments;
+use Corals\Modules\Utility\Rating\Traits\Comment\ModelHasComments;
 use Corals\User\Models\User;
 
 class Rating extends BaseModel
 {
     use ModelHasComments;
     use PresentableTrait;
+
     /**
      * @var string
      */

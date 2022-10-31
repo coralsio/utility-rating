@@ -1,9 +1,9 @@
 <?php
 
-namespace Corals\Modules\Utility\Traits\Rating;
+namespace Corals\Modules\Utility\Rating\Traits;
 
-use Corals\Modules\Utility\Models\Rating\AvgRating;
-use Corals\Modules\Utility\Models\Rating\Rating;
+use Corals\Modules\Utility\Rating\Models\AvgRating;
+use Corals\Modules\Utility\Rating\Models\Rating;
 use Illuminate\Database\Eloquent\Model;
 
 trait ReviewRateable
@@ -25,7 +25,7 @@ trait ReviewRateable
     {
         $ratings = $this->morphMany(Rating::class, 'reviewrateable');
 
-        if (! is_null($status)) {
+        if (!is_null($status)) {
             $ratings = $ratings->where('utility_ratings.status', $status);
         }
 

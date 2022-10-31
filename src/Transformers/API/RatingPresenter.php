@@ -1,6 +1,6 @@
 <?php
 
-namespace Corals\Modules\Utility\Transformers\API\Rating;
+namespace Corals\Modules\Utility\Rating\Transformers\API;
 
 use Corals\Foundation\Transformers\FractalPresenter;
 

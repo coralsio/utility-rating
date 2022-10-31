@@ -1,10 +1,10 @@
 <?php
 
-namespace Corals\Modules\Utility\Classes\Rating;
+namespace Corals\Modules\Utility\Rating\Classes;
 
-use Corals\Modules\Utility\Models\Rating\AvgRating;
-use Corals\Modules\Utility\Models\Rating\Rating as RatingModel;
-use Corals\Modules\Utility\Traits\Rating\ReviewRateable;
+use Corals\Modules\Utility\Rating\Models\AvgRating;
+use Corals\Modules\Utility\Rating\Models\Rating as RatingModel;
+use Corals\Modules\Utility\Rating\Traits\ReviewRateable;
 use Illuminate\Database\Eloquent\Model;
 
 class RatingManager

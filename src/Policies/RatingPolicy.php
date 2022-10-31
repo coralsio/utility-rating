@@ -1,9 +1,9 @@
 <?php
 
-namespace Corals\Modules\Utility\Policies\Rating;
+namespace Corals\Modules\Utility\Rating\Policies;
 
 use Corals\Foundation\Policies\BasePolicy;
-use Corals\Modules\Utility\Models\Rating\Rating;
+use Corals\Modules\Utility\Rating\Models\Rating;
 use Corals\User\Models\User;
 
 class RatingPolicy extends BasePolicy
@@ -16,7 +16,7 @@ class RatingPolicy extends BasePolicy
 
     public function updateStatus(User $user, Rating $rating, $status)
     {
-        if ($user->cant('Utility::rating.set_status') && ! isSuperUser($user)) {
+        if ($user->cant('Utility::rating.set_status') && !isSuperUser($user)) {
             return false;
         }
         switch ($status) {

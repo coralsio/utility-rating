@@ -1,10 +1,10 @@
 <?php
 
-namespace Corals\Modules\Utility\Providers;
+namespace Corals\Modules\Utility\Rating\Providers;
 
-use CCorals\Modules\Utility\database\seeds\UtilityRatingDatabaseSeeder;
+use CCorals\Modules\Utility\Rating\database\seeds\UtilityRatingDatabaseSeeder;
 use Corals\Foundation\Providers\BaseUninstallModuleServiceProvider;
-use Corals\Modules\Utility\database\migrations\CreateRatingTable;
+use Corals\Modules\Utility\Rating\database\migrations\CreateRatingTable;
 
 class UninstallModuleServiceProvider extends BaseUninstallModuleServiceProvider
 {

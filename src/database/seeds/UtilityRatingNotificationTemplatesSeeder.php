@@ -1,6 +1,6 @@
 <?php
 
-namespace Corals\Modules\Utility\database\seeds;
+namespace Corals\Modules\Utility\Rating\database\seeds;
 
 use Corals\User\Communication\Models\NotificationTemplate;
 use Illuminate\Database\Seeder;
@@ -70,7 +70,7 @@ Rating Criteria: {rating_criteria},<br/>
 <br/>
 Thanks.
 </p></td></tr></tbody></table>',
-                'database' => 'Rating status 
+                'database' => 'Rating status
  for "<b>{reviewrateable_identifier}</b>" ({reviewrateable_class}) has beed changed for {author_name} ({author_email}) To {rating_status}.<br/>
 Check the following details:
 <br/>
