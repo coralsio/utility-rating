@@ -3,8 +3,8 @@
 namespace Corals\Modules\Utility\Policies\Rating;
 
 use Corals\Foundation\Policies\BasePolicy;
-use Corals\User\Models\User;
 use Corals\Modules\Utility\Models\Rating\Rating;
+use Corals\User\Models\User;
 
 class RatingPolicy extends BasePolicy
 {

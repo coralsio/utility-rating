@@ -2,9 +2,9 @@
 
 namespace Tests\Feature;
 
+use Corals\Modules\Utility\Models\Rating;
 use Corals\Settings\Facades\Modules;
 use Corals\User\Models\User;
-use Corals\Modules\Utility\Models\Rating;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\Auth;
 use Tests\TestCase;
@@ -36,8 +36,8 @@ class UtilityRatingTest extends TestCase
             'Classified' => ['code' => 'corals-classified', 'prefix' => 'user'],
             'Ecommerce' => ['code' => 'corals-ecommerce', 'prefix' => 'shop'],
             'Entity' => ['code' => 'corals-entity', 'prefix' => 'entity/entry'],
-            'Reservation'=>['code' => 'corals-reservation', 'prefix' => 'reservation'],
-            'Directory'=>['code' => 'corals-directory', 'prefix' => 'user']
+            'Reservation' => ['code' => 'corals-reservation', 'prefix' => 'reservation'],
+            'Directory' => ['code' => 'corals-directory', 'prefix' => 'user'],
         ];
 
         foreach ($modules as $module => $array) {
@@ -66,7 +66,6 @@ class UtilityRatingTest extends TestCase
             }
         }
         $this->assertFalse(false);
-
     }
 
     public function test_utility_rating_toggle_status()
@@ -119,7 +118,8 @@ class UtilityRatingTest extends TestCase
         if ($this->rating) {
             $response = $this->delete('utilities/ratings/' . $this->rating->hashed_id);
 
-            $response->assertStatus(200)->assertSeeText('Rating has been deleted successfully.');;
+            $response->assertStatus(200)->assertSeeText('Rating has been deleted successfully.');
+            ;
         }
         $this->assertTrue(true);
     }
