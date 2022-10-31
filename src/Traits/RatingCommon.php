@@ -1,10 +1,9 @@
 <?php
 
-namespace Corals\Modules\Utility\Traits\Rating;
+namespace Corals\Modules\Utility\Rating\Traits;
 
 trait RatingCommon
 {
-    /** @var \Corals\Modules\Utility\RatingService\Rating */
     protected $ratingService;
     protected $rateableClass = null;
     protected $redirectUrl = null;

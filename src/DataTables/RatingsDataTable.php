@@ -1,10 +1,10 @@
 <?php
 
-namespace Corals\Modules\Utility\DataTables;
+namespace Corals\Modules\Utility\Rating\DataTables;
 
 use Corals\Foundation\DataTables\BaseDataTable;
-use Corals\Modules\Utility\Models\Rating\Rating;
-use Corals\Modules\Utility\Transformers\Rating\RatingTransformer;
+use Corals\Modules\Utility\Rating\Models\Rating;
+use Corals\Modules\Utility\Rating\Transformers\RatingTransformer;
 use Illuminate\Http\Request;
 use Yajra\DataTables\EloquentDataTable;
 
@@ -26,9 +26,9 @@ class RatingsDataTable extends BaseDataTable
     }
 
     /**
-     * Get query source of dataTable.
      * @param Rating $model
-     * @return \Illuminate\Database\Eloquent\Builder|static
+     * @param Request $request
+     * @return mixed
      */
     public function query(Rating $model, Request $request)
     {

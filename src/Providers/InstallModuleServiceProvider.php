@@ -1,10 +1,10 @@
 <?php
 
-namespace Corals\Modules\Utility\Providers;
+namespace Corals\Modules\Utility\Rating\Providers;
 
 use Corals\Foundation\Providers\BaseInstallModuleServiceProvider;
-use Corals\Modules\Utility\database\migrations\CreateRatingTable;
-use Corals\Modules\Utility\database\seeds\UtilityRatingDatabaseSeeder;
+use Corals\Modules\Utility\Rating\database\migrations\CreateRatingTable;
+use Corals\Modules\Utility\Rating\database\seeds\UtilityRatingDatabaseSeeder;
 
 class InstallModuleServiceProvider extends BaseInstallModuleServiceProvider
 {

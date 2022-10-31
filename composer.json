@@ -16,7 +16,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "Corals\\Modules\\Utility\\": "src"
+            "Corals\\Modules\\Utility\\Rating": "src"
         }
     },
     "autoload-dev": {
