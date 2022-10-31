@@ -2,9 +2,9 @@
 
 namespace Corals\Modules\Utility\Rating\Providers;
 
-use Corals\Modules\Utility\Rating\database\seeds\UtilityRatingDatabaseSeeder;
 use Corals\Foundation\Providers\BaseUninstallModuleServiceProvider;
 use Corals\Modules\Utility\Rating\database\migrations\CreateRatingTable;
+use Corals\Modules\Utility\Rating\database\seeds\UtilityRatingDatabaseSeeder;
 
 class UninstallModuleServiceProvider extends BaseUninstallModuleServiceProvider
 {
