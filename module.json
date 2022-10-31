@@ -4,7 +4,7 @@
     "author": "Corals",
     "type": "verndor",
     "description": "Utility Ratings",
-    "namespace": "Corals\\Modules\\Utility",
+    "namespace": "Corals\\Modules\\Utility\\Rating",
     "provider": "UtilityRatingServiceProvider",
     "version": "4.2.4",
     "load_order": "600",
