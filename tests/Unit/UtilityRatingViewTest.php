@@ -30,4 +30,13 @@ class UtilityRatingViewTest extends TestCase
 
         $response->assertStatus(200)->assertViewIs('utility-rating::index');
     }
+
+    public function test_utility_rating_bulk_action()
+    {
+        $response = $this->post('utilities/ratings/bulk-action', [
+            'action' => 'pending',]);
+
+
+        $response->assertSeeText('message');
+    }
 }

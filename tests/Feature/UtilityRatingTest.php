@@ -2,7 +2,7 @@
 
 namespace Tests\Feature;
 
-use Corals\Modules\Utility\Models\Rating;
+use Corals\Modules\Utility\Rating\Models\Rating;
 use Corals\Settings\Facades\Modules;
 use Corals\User\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -49,13 +49,14 @@ class UtilityRatingTest extends TestCase
 
                 foreach ($myClasses as $class) {
                     $traits = class_uses($class);
-                    if (array_search('Corals\\Modules\\Utility\\Traits\\Rating\\ReviewRateable', $traits)) {
+                    if (array_search('Corals\\Modules\\Utility\\Rating\\Traits\\ReviewRateable', $traits)) {
                         $model = $class::query()->first();
                         if ($model) {
+                            $review = array("Works great", "Good", "Nice");
                             $response = $this->post($array['prefix'] . '/' . $model->hashed_id . '/rate', [
                                 'review_rating' => random_int(1, 5),
-                                'review_subject' => 'good',
-                                'review_text' => 'nice',]);
+                                'review_subject' => array_rand($review),
+                                'review_text' => array_rand($review),]);
 
                             $this->rating = Rating::query()->first();
 
@@ -65,7 +66,7 @@ class UtilityRatingTest extends TestCase
                 }
             }
         }
-        $this->assertFalse(false);
+        $this->assertTrue(true);
     }
 
     public function test_utility_rating_toggle_status()
@@ -77,15 +78,6 @@ class UtilityRatingTest extends TestCase
                 ->assertSeeText('Review status has been update successfully');
         }
         $this->assertTrue(true);
-    }
-
-    public function test_utility_rating_bulk_action()
-    {
-        $response = $this->post('utilities/ratings/bulk-action', [
-            'action' => 'pending',]);
-
-
-        $response->assertSeeText('message');
     }
 
     public function test_utility_rating_edit()
@@ -119,7 +111,6 @@ class UtilityRatingTest extends TestCase
             $response = $this->delete('utilities/ratings/' . $this->rating->hashed_id);
 
             $response->assertStatus(200)->assertSeeText('Rating has been deleted successfully.');
-            ;
         }
         $this->assertTrue(true);
     }

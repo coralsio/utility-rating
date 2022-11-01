@@ -4,7 +4,7 @@ namespace Corals\Modules\Utility\Rating\Models;
 
 use Corals\Foundation\Models\BaseModel;
 use Corals\Foundation\Transformers\PresentableTrait;
-use Corals\Modules\Utility\Rating\Traits\Comment\ModelHasComments;
+use Corals\Modules\Utility\Comment\Traits\ModelHasComments;
 use Corals\User\Models\User;
 
 class Rating extends BaseModel
