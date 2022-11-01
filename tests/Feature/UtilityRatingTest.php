@@ -52,7 +52,7 @@ class UtilityRatingTest extends TestCase
                     if (array_search('Corals\\Modules\\Utility\\Rating\\Traits\\ReviewRateable', $traits)) {
                         $model = $class::query()->first();
                         if ($model) {
-                            $review = array("Works great", "Good", "Nice");
+                            $review = ["Works great", "Good", "Nice"];
                             $response = $this->post($array['prefix'] . '/' . $model->hashed_id . '/rate', [
                                 'review_rating' => random_int(1, 5),
                                 'review_subject' => array_rand($review),
