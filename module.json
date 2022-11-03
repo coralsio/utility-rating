@@ -9,5 +9,8 @@
     "version": "1.0",
     "load_order": "0",
     "folder": "utility-rating",
-    "icon": "fa fa-star"
+    "icon": "fa fa-star",
+    "require": {
+        "corals-utility-comment": "1.0"
+    }
 }
