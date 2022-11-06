@@ -17,6 +17,7 @@ class UtilityRatingDatabaseSeeder extends Seeder
     {
         $this->call(UtilityRatingPermissionsDatabaseSeeder::class);
         $this->call(UtilityRatingNotificationTemplatesSeeder::class);
+        $this->call(UtilityRatingMenuDatabaseSeeder::class);
     }
 
     public function rollback()
