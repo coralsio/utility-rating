@@ -11,6 +11,7 @@
     "folder": "utility-rating",
     "icon": "fa fa-star",
     "require": {
-        "corals-utility-comment": "1.0"
+        "corals-utility-comment": "1.0",
+        "corals-utility": "^4.0"
     }
 }
