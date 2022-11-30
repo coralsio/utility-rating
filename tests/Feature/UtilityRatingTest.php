@@ -13,7 +13,7 @@ class UtilityRatingTest extends TestCase
 {
     use DatabaseTransactions;
 
-    protected $rating =[];
+    protected $rating = [];
 
     protected function setUp(): void
     {
@@ -38,7 +38,7 @@ class UtilityRatingTest extends TestCase
             'Directory' => ['code' => 'corals-directory', 'prefix' => 'user'],
         ];
         $reviews = ["Works great", "Good", "Nice"];
-        
+
         foreach ($modules as $module => $array) {
             if (Modules::isModuleActive($array['code'])) {
                 $namespace = 'Corals\Modules\\' . $module . '\\Models';
@@ -51,7 +51,7 @@ class UtilityRatingTest extends TestCase
                     if (array_search('Corals\\Modules\\Utility\\Rating\\Traits\\ReviewRateable', $traits)) {
                         $model = $class::query()->first();
                         if ($model) {
-                            $review= array_rand($reviews);
+                            $review = array_rand($reviews);
                             $response = $this->post($array['prefix'] . '/' . $model->hashed_id . '/rate', [
                                 'review_rating' => random_int(1, 5),
                                 'review_subject' => $reviews[$review],
@@ -82,7 +82,7 @@ class UtilityRatingTest extends TestCase
     public function test_utility_rating_toggle_status()
     {
         $this->test_utility_rating_create();
-        
+
         if ($this->rating) {
             $response = $this->post('utilities/ratings/' . $this->rating->hashed_id . '/disapproved');
 
@@ -154,7 +154,7 @@ class UtilityRatingTest extends TestCase
             $response = $this->delete('utilities/ratings/' . $this->rating->hashed_id);
 
             $response->assertStatus(200)->assertSeeText('Rating has been deleted successfully.');
-            
+
             $this->isSoftDeletableModel(Rating::class);
             $this->assertDatabaseMissing('utility_ratings', [
                 'rating' => $this->rating->rating,
