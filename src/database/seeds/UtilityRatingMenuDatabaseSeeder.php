@@ -13,10 +13,11 @@ class UtilityRatingMenuDatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $utilities_menu_id = \DB::table('menus')->where('key' , 'utility')->pluck('id')->first();
+        $utilities_menu_id = \DB::table('menus')->where('key', 'utility')->pluck('id')->first();
 
 
-        \DB::table('menus')->insert([
+        \DB::table('menus')->insert(
+            [
                 [
                     'parent_id' => $utilities_menu_id,
                     'key' => null,
@@ -27,7 +28,7 @@ class UtilityRatingMenuDatabaseSeeder extends Seeder
                     'icon' => 'fa fa-star',
                     'target' => null,
                     'roles' => '["1"]',
-                    'order' => 0
+                    'order' => 0,
                 ],
 
             ]
