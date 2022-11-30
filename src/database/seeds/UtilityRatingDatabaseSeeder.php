@@ -23,7 +23,6 @@ class UtilityRatingDatabaseSeeder extends Seeder
     public function rollback()
     {
         Permission::where('name', 'like', 'Utility::rating%')->delete();
-        Permission::where('name', 'Administrations::admin.utility_rating')->delete();
 
         NotificationTemplate::where('name', 'like', 'notifications.utility_rating%')->delete();
     }

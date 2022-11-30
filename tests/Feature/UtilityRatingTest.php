@@ -13,7 +13,7 @@ class UtilityRatingTest extends TestCase
 {
     use DatabaseTransactions;
 
-    protected $rating = [];
+    protected $rating =[];
 
     protected function setUp(): void
     {
@@ -37,7 +37,8 @@ class UtilityRatingTest extends TestCase
             'Reservation' => ['code' => 'corals-reservation', 'prefix' => 'reservation'],
             'Directory' => ['code' => 'corals-directory', 'prefix' => 'user'],
         ];
-
+        $reviews = ["Works great", "Good", "Nice"];
+        
         foreach ($modules as $module => $array) {
             if (Modules::isModuleActive($array['code'])) {
                 $namespace = 'Corals\Modules\\' . $module . '\\Models';
@@ -50,15 +51,26 @@ class UtilityRatingTest extends TestCase
                     if (array_search('Corals\\Modules\\Utility\\Rating\\Traits\\ReviewRateable', $traits)) {
                         $model = $class::query()->first();
                         if ($model) {
-                            $review = ["Works great", "Good", "Nice"];
+                            $review= array_rand($reviews);
                             $response = $this->post($array['prefix'] . '/' . $model->hashed_id . '/rate', [
                                 'review_rating' => random_int(1, 5),
-                                'review_subject' => array_rand($review),
-                                'review_text' => array_rand($review),]);
+                                'review_subject' => $reviews[$review],
+                                'review_text' => $reviews[$review],]);
 
                             $this->rating = Rating::query()->first();
 
-                            $response->assertStatus(200)->assertSeeText('Your review has been added successfully');
+                            $response->assertStatus(200)->assertDontSee('The given data was invalid')
+                                ->assertSeeText('Your review has been added successfully');
+
+                            $this->assertDatabaseHas('utility_ratings', [
+                                'rating' => $this->rating->rating,
+                                'title' => $this->rating->title,
+                                'body' => $this->rating->body,
+                                'reviewrateable_type' => $this->rating->reviewrateable_type,
+                                'reviewrateable_id' => $this->rating->reviewrateable_id,
+                                'author_type' => $this->rating->author_type,
+                                'author_id' => $this->rating->author_id,
+                            ]);
                         }
                     }
                 }
@@ -69,6 +81,8 @@ class UtilityRatingTest extends TestCase
 
     public function test_utility_rating_toggle_status()
     {
+        $this->test_utility_rating_create();
+        
         if ($this->rating) {
             $response = $this->post('utilities/ratings/' . $this->rating->hashed_id . '/disapproved');
 
@@ -80,6 +94,13 @@ class UtilityRatingTest extends TestCase
 
     public function test_utility_rating_edit()
     {
+        $this->test_utility_rating_create();
+
+        $user = User::query()->whereHas('roles', function ($query) {
+            $query->where('name', 'superuser');
+        })->first();
+        Auth::loginUsingId($user->id);
+
         if ($this->rating) {
             $response = $this->get('utilities/ratings/' . $this->rating->hashed_id . '/edit');
 
@@ -90,6 +111,13 @@ class UtilityRatingTest extends TestCase
 
     public function test_utility_rating_update()
     {
+        $this->test_utility_rating_create();
+
+        $user = User::query()->whereHas('roles', function ($query) {
+            $query->where('name', 'superuser');
+        })->first();
+        Auth::loginUsingId($user->id);
+
         if ($this->rating) {
             $response = $this->put('utilities/ratings/' . $this->rating->hashed_id, [
                 'review_rating' => 3,
@@ -99,16 +127,44 @@ class UtilityRatingTest extends TestCase
 
 
             $response->assertRedirect('utilities/ratings');
+            $this->assertDatabaseHas('utility_ratings', [
+                'rating' => 3,
+                'title' => 'good',
+                'body' => 'nice',
+                'status' => 'disapproved',
+                'reviewrateable_type' => $this->rating->reviewrateable_type,
+                'reviewrateable_id' => $this->rating->reviewrateable_id,
+                'author_type' => $this->rating->author_type,
+                'author_id' => $this->rating->author_id,
+            ]);
         }
         $this->assertTrue(true);
     }
 
     public function test_utility_rating_delete()
     {
+        $this->test_utility_rating_create();
+
+        $user = User::query()->whereHas('roles', function ($query) {
+            $query->where('name', 'superuser');
+        })->first();
+        Auth::loginUsingId($user->id);
+
         if ($this->rating) {
             $response = $this->delete('utilities/ratings/' . $this->rating->hashed_id);
 
             $response->assertStatus(200)->assertSeeText('Rating has been deleted successfully.');
+            
+            $this->isSoftDeletableModel(Rating::class);
+            $this->assertDatabaseMissing('utility_ratings', [
+                'rating' => $this->rating->rating,
+                'title' => $this->rating->title,
+                'body' => $this->rating->body,
+                'reviewrateable_type' => $this->rating->reviewrateable_type,
+                'reviewrateable_id' => $this->rating->reviewrateable_id,
+                'author_type' => $this->rating->author_type,
+                'author_id' => $this->rating->author_id,
+            ]);
         }
         $this->assertTrue(true);
     }

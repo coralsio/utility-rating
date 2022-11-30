@@ -16,12 +16,6 @@ class UtilityRatingPermissionsDatabaseSeeder extends Seeder
     public function run()
     {
         \DB::table('permissions')->insert([
-            [
-                'name' => 'Administrations::admin.utility_rating',
-                'guard_name' => config('auth.defaults.guard'),
-                'created_at' => \Carbon\Carbon::now(),
-                'updated_at' => \Carbon\Carbon::now(),
-            ],
             //rating
             [
                 'name' => 'Utility::rating.create',
