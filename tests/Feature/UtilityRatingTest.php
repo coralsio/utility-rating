@@ -59,18 +59,18 @@ class UtilityRatingTest extends TestCase
 
                             $this->rating = Rating::query()->first();
 
-                                $response->assertStatus(200)->assertDontSee('The given data was invalid')
-                                    ->assertSeeText('Your review has been added successfully');
+                            $response->assertStatus(200)->assertDontSee('The given data was invalid')
+                                ->assertSeeText('Your review has been added successfully');
 
-                                $this->assertDatabaseHas('utility_ratings', [
-                                    'rating' => $this->rating->rating,
-                                    'title' => $this->rating->title,
-                                    'body' => $this->rating->body,
-                                    'reviewrateable_type' => $this->rating->reviewrateable_type,
-                                    'reviewrateable_id' => $this->rating->reviewrateable_id,
-                                    'author_type' => $this->rating->author_type,
-                                    'author_id' => $this->rating->author_id,
-                                ]);
+                            $this->assertDatabaseHas('utility_ratings', [
+                                'rating' => $this->rating->rating,
+                                'title' => $this->rating->title,
+                                'body' => $this->rating->body,
+                                'reviewrateable_type' => $this->rating->reviewrateable_type,
+                                'reviewrateable_id' => $this->rating->reviewrateable_id,
+                                'author_type' => $this->rating->author_type,
+                                'author_id' => $this->rating->author_id,
+                            ]);
                         }
                     }
                 }
