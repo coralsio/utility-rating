@@ -13,7 +13,7 @@ class UtilityRatingTest extends TestCase
 {
     use DatabaseTransactions;
 
-    protected $rating =[];
+    protected $rating = [];
 
     protected function setUp(): void
     {
@@ -51,7 +51,7 @@ class UtilityRatingTest extends TestCase
                     if (array_search('Corals\\Modules\\Utility\\Rating\\Traits\\ReviewRateable', $traits)) {
                         $model = $class::query()->first();
                         if ($model) {
-                            $review= array_rand($reviews);
+                            $review = array_rand($reviews);
                             $response = $this->post($array['prefix'] . '/' . $model->hashed_id . '/rate', [
                                 'review_rating' => random_int(1, 5),
                                 'review_subject' => $reviews[$review],
