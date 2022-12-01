@@ -38,7 +38,7 @@ class UtilityRatingTest extends TestCase
             'Directory' => ['code' => 'corals-directory', 'prefix' => 'user'],
         ];
         $reviews = ["Works great", "Good", "Nice"];
-        
+
         foreach ($modules as $module => $array) {
             if (Modules::isModuleActive($array['code'])) {
                 $namespace = 'Corals\Modules\\' . $module . '\\Models';
@@ -59,18 +59,18 @@ class UtilityRatingTest extends TestCase
 
                             $this->rating = Rating::query()->first();
 
-                            $response->assertStatus(200)->assertDontSee('The given data was invalid')
-                                ->assertSeeText('Your review has been added successfully');
+                                $response->assertStatus(200)->assertDontSee('The given data was invalid')
+                                    ->assertSeeText('Your review has been added successfully');
 
-                            $this->assertDatabaseHas('utility_ratings', [
-                                'rating' => $this->rating->rating,
-                                'title' => $this->rating->title,
-                                'body' => $this->rating->body,
-                                'reviewrateable_type' => $this->rating->reviewrateable_type,
-                                'reviewrateable_id' => $this->rating->reviewrateable_id,
-                                'author_type' => $this->rating->author_type,
-                                'author_id' => $this->rating->author_id,
-                            ]);
+                                $this->assertDatabaseHas('utility_ratings', [
+                                    'rating' => $this->rating->rating,
+                                    'title' => $this->rating->title,
+                                    'body' => $this->rating->body,
+                                    'reviewrateable_type' => $this->rating->reviewrateable_type,
+                                    'reviewrateable_id' => $this->rating->reviewrateable_id,
+                                    'author_type' => $this->rating->author_type,
+                                    'author_id' => $this->rating->author_id,
+                                ]);
                         }
                     }
                 }
@@ -82,7 +82,7 @@ class UtilityRatingTest extends TestCase
     public function test_utility_rating_toggle_status()
     {
         $this->test_utility_rating_create();
-        
+
         if ($this->rating) {
             $response = $this->post('utilities/ratings/' . $this->rating->hashed_id . '/disapproved');
 
@@ -154,7 +154,7 @@ class UtilityRatingTest extends TestCase
             $response = $this->delete('utilities/ratings/' . $this->rating->hashed_id);
 
             $response->assertStatus(200)->assertSeeText('Rating has been deleted successfully.');
-            
+
             $this->isSoftDeletableModel(Rating::class);
             $this->assertDatabaseMissing('utility_ratings', [
                 'rating' => $this->rating->rating,
