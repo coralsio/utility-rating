@@ -2,6 +2,7 @@
 
 namespace Corals\Modules\Utility\Rating;
 
+use Corals\Foundation\Providers\BasePackageServiceProvider;
 use Corals\Modules\Utility\Rating\Classes\RatingManager;
 use Corals\Modules\Utility\Rating\Commands\RatingCalculator;
 use Corals\Modules\Utility\Rating\Models\Rating;
@@ -13,11 +14,15 @@ use Corals\Settings\Facades\Modules;
 use Corals\User\Communication\Facades\CoralsNotification;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Foundation\AliasLoader;
-use Illuminate\Support\ServiceProvider;
 
-class UtilityRatingServiceProvider extends ServiceProvider
+class UtilityRatingServiceProvider extends BasePackageServiceProvider
 {
-    public function boot()
+    /**
+     * @var
+     */
+    protected $packageCode = 'corals-utility-rating';
+
+    public function bootPackage()
     {
         $this->loadViewsFrom(__DIR__ . '/resources/views', 'utility-rating');
         $this->loadTranslationsFrom(__DIR__ . '/resources/lang', 'utility-rating');
@@ -33,12 +38,11 @@ class UtilityRatingServiceProvider extends ServiceProvider
 
         $this->registerMorphMaps();
         $this->registerCommand();
-        $this->registerModulesPackages();
 
         $this->addEvents();
     }
 
-    public function register()
+    public function registerPackage()
     {
         $this->app->register(UtilityAuthServiceProvider::class);
         $this->app->register(UtilityRouteServiceProvider::class);
@@ -61,7 +65,7 @@ class UtilityRatingServiceProvider extends ServiceProvider
         ]);
     }
 
-    protected function registerModulesPackages()
+    public function registerModulesPackages()
     {
         Modules::addModulesPackages('corals/utility-rating');
     }
