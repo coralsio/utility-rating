@@ -2,9 +2,9 @@
 
 namespace Tests\Feature;
 
-use Corals\Utility\Rating\Models\Rating;
 use Corals\Settings\Facades\Modules;
 use Corals\User\Models\User;
+use Corals\Utility\Rating\Models\Rating;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\Auth;
 use Tests\TestCase;

@@ -4,8 +4,8 @@ namespace Corals\Utility\Rating\Models;
 
 use Corals\Foundation\Models\BaseModel;
 use Corals\Foundation\Transformers\PresentableTrait;
-use Corals\Utility\Comment\Traits\ModelHasComments;
 use Corals\User\Models\User;
+use Corals\Utility\Comment\Traits\ModelHasComments;
 
 class Rating extends BaseModel
 {

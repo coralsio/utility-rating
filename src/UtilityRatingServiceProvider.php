@@ -3,6 +3,8 @@
 namespace Corals\Utility\Rating;
 
 use Corals\Foundation\Providers\BasePackageServiceProvider;
+use Corals\Settings\Facades\Modules;
+use Corals\User\Communication\Facades\CoralsNotification;
 use Corals\Utility\Rating\Classes\RatingManager;
 use Corals\Utility\Rating\Commands\RatingCalculator;
 use Corals\Utility\Rating\Models\Rating;
@@ -10,8 +12,6 @@ use Corals\Utility\Rating\Notifications\RateCreated;
 use Corals\Utility\Rating\Notifications\RatingToggleStatus;
 use Corals\Utility\Rating\Providers\UtilityAuthServiceProvider;
 use Corals\Utility\Rating\Providers\UtilityRouteServiceProvider;
-use Corals\Settings\Facades\Modules;
-use Corals\User\Communication\Facades\CoralsNotification;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Foundation\AliasLoader;
 
