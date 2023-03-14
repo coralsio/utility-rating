@@ -1,10 +1,10 @@
 <?php
 
-namespace Corals\Modules\Utility\Rating\DataTables;
+namespace Corals\Utility\Rating\DataTables;
 
 use Corals\Foundation\DataTables\BaseDataTable;
-use Corals\Modules\Utility\Rating\Models\Rating;
-use Corals\Modules\Utility\Rating\Transformers\RatingTransformer;
+use Corals\Utility\Rating\Models\Rating;
+use Corals\Utility\Rating\Transformers\RatingTransformer;
 use Illuminate\Http\Request;
 use Yajra\DataTables\EloquentDataTable;
 

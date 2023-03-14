@@ -1,6 +1,6 @@
 <?php
 
-namespace Corals\Modules\Utility\Rating\Notifications;
+namespace Corals\Utility\Rating\Notifications;
 
 use Corals\User\Communication\Classes\CoralsBaseNotification;
 

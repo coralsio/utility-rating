@@ -1,6 +1,6 @@
 <?php
 
-namespace Corals\Modules\Utility\Rating\Facades;
+namespace Corals\Utility\Rating\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
@@ -11,6 +11,6 @@ class RatingManager extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return \Corals\Modules\Utility\Rating\Classes\RatingManager::class;
+        return \Corals\Utility\Rating\Classes\RatingManager::class;
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Corals\Modules\Utility\Rating\database\seeds;
+namespace Corals\Utility\Rating\database\seeds;
 
 use Illuminate\Database\Seeder;
 

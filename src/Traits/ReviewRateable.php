@@ -1,9 +1,9 @@
 <?php
 
-namespace Corals\Modules\Utility\Rating\Traits;
+namespace Corals\Utility\Rating\Traits;
 
-use Corals\Modules\Utility\Rating\Models\AvgRating;
-use Corals\Modules\Utility\Rating\Models\Rating;
+use Corals\Utility\Rating\Models\AvgRating;
+use Corals\Utility\Rating\Models\Rating;
 use Illuminate\Database\Eloquent\Model;
 
 trait ReviewRateable

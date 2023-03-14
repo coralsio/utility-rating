@@ -1,9 +1,9 @@
 <?php
 
-namespace Corals\Modules\Utility\Rating\Transformers;
+namespace Corals\Utility\Rating\Transformers;
 
 use Corals\Foundation\Transformers\BaseTransformer;
-use Corals\Modules\Utility\Rating\Models\Rating;
+use Corals\Utility\Rating\Models\Rating;
 
 class RatingTransformer extends BaseTransformer
 {

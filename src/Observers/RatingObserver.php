@@ -1,8 +1,8 @@
 <?php
 
-namespace Corals\Modules\Utility\Rating\Observers;
+namespace Corals\Utility\Rating\Observers;
 
-use Corals\Modules\Utility\Rating\Models\Rating;
+use Corals\Utility\Rating\Models\Rating;
 
 class RatingObserver
 {

@@ -1,15 +1,15 @@
 <?php
 
-namespace Corals\Modules\Utility\Rating;
+namespace Corals\Utility\Rating;
 
 use Corals\Foundation\Providers\BasePackageServiceProvider;
-use Corals\Modules\Utility\Rating\Classes\RatingManager;
-use Corals\Modules\Utility\Rating\Commands\RatingCalculator;
-use Corals\Modules\Utility\Rating\Models\Rating;
-use Corals\Modules\Utility\Rating\Notifications\RateCreated;
-use Corals\Modules\Utility\Rating\Notifications\RatingToggleStatus;
-use Corals\Modules\Utility\Rating\Providers\UtilityAuthServiceProvider;
-use Corals\Modules\Utility\Rating\Providers\UtilityRouteServiceProvider;
+use Corals\Utility\Rating\Classes\RatingManager;
+use Corals\Utility\Rating\Commands\RatingCalculator;
+use Corals\Utility\Rating\Models\Rating;
+use Corals\Utility\Rating\Notifications\RateCreated;
+use Corals\Utility\Rating\Notifications\RatingToggleStatus;
+use Corals\Utility\Rating\Providers\UtilityAuthServiceProvider;
+use Corals\Utility\Rating\Providers\UtilityRouteServiceProvider;
 use Corals\Settings\Facades\Modules;
 use Corals\User\Communication\Facades\CoralsNotification;
 use Illuminate\Database\Eloquent\Relations\Relation;

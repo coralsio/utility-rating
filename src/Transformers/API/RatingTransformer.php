@@ -1,10 +1,10 @@
 <?php
 
-namespace Corals\Modules\Utility\Rating\Transformers\API;
+namespace Corals\Utility\Rating\Transformers\API;
 
 use Corals\Foundation\Transformers\APIBaseTransformer;
-use Corals\Modules\Utility\Comment\Transformers\API\CommentPresenter;
-use Corals\Modules\Utility\Rating\Models\Rating;
+use Corals\Utility\Comment\Transformers\API\CommentPresenter;
+use Corals\Utility\Rating\Models\Rating;
 
 class RatingTransformer extends APIBaseTransformer
 {

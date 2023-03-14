@@ -16,7 +16,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "Corals\\Modules\\Utility\\Rating\\": "src"
+            "Corals\\Utility\\Rating\\": "src"
         }
     },
     "autoload-dev": {
@@ -40,7 +40,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Corals\\Modules\\Utility\\Rating\\UtilityRatingServiceProvider"
+                "Corals\\Utility\\Rating\\UtilityRatingServiceProvider"
             ]
         }
     },

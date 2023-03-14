@@ -1,9 +1,9 @@
 <?php
 
-namespace Corals\Modules\Utility\Rating\Http\Requests;
+namespace Corals\Utility\Rating\Http\Requests;
 
 use Corals\Foundation\Http\Requests\BaseRequest;
-use Corals\Modules\Utility\Rating\Models\Rating;
+use Corals\Utility\Rating\Models\Rating;
 
 class RatingRequest extends BaseRequest
 {

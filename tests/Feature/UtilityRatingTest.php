@@ -2,7 +2,7 @@
 
 namespace Tests\Feature;
 
-use Corals\Modules\Utility\Rating\Models\Rating;
+use Corals\Utility\Rating\Models\Rating;
 use Corals\Settings\Facades\Modules;
 use Corals\User\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -48,7 +48,7 @@ class UtilityRatingTest extends TestCase
 
                 foreach ($myClasses as $class) {
                     $traits = class_uses($class);
-                    if (array_search('Corals\\Modules\\Utility\\Rating\\Traits\\ReviewRateable', $traits)) {
+                    if (array_search('Corals\\Utility\\Rating\\Traits\\ReviewRateable', $traits)) {
                         $model = $class::query()->first();
                         if ($model) {
                             $review = array_rand($reviews);

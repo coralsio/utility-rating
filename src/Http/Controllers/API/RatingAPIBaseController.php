@@ -1,13 +1,13 @@
 <?php
 
-namespace Corals\Modules\Utility\Rating\Http\Controllers\API;
+namespace Corals\Utility\Rating\Http\Controllers\API;
 
 use Corals\Foundation\Http\Controllers\APIBaseController;
-use Corals\Modules\Utility\Rating\DataTables\RatingsDataTable;
-use Corals\Modules\Utility\Rating\Http\Requests\RatingRequest;
-use Corals\Modules\Utility\Rating\Models\Rating;
-use Corals\Modules\Utility\Rating\Services\RatingService;
-use Corals\Modules\Utility\Rating\Traits\RatingCommon;
+use Corals\Utility\Rating\DataTables\RatingsDataTable;
+use Corals\Utility\Rating\Http\Requests\RatingRequest;
+use Corals\Utility\Rating\Models\Rating;
+use Corals\Utility\Rating\Services\RatingService;
+use Corals\Utility\Rating\Traits\RatingCommon;
 
 class RatingAPIBaseController extends APIBaseController
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Corals\Modules\Utility\Rating\Traits;
+namespace Corals\Utility\Rating\Traits;
 
 trait RatingCommon
 {

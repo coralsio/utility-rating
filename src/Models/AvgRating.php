@@ -1,6 +1,6 @@
 <?php
 
-namespace Corals\Modules\Utility\Rating\Models;
+namespace Corals\Utility\Rating\Models;
 
 use Corals\Foundation\Models\BaseModel;
 use Corals\Foundation\Transformers\PresentableTrait;

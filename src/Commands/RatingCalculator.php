@@ -1,8 +1,8 @@
 <?php
 
-namespace Corals\Modules\Utility\Rating\Commands;
+namespace Corals\Utility\Rating\Commands;
 
-use Corals\Modules\Utility\Rating\Facades\RatingManager;
+use Corals\Utility\Rating\Facades\RatingManager;
 use Illuminate\Console\Command;
 
 class RatingCalculator extends Command
