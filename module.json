@@ -12,6 +12,6 @@
     "icon": "fa fa-star",
     "require": {
         "corals-utility-comment": "^10.0.0",
-        "corals-utility": "^4.0"
+        "corals-utility": "^10.0.0"
     }
 }
